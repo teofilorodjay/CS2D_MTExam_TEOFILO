@@ -1,0 +1,50 @@
+const DSA = [];
+const PL = [];
+const Networks = [];
+
+function enroll(subjectArray, studentName) {
+    subjectArray.push(studentName);
+    console.log(`${studentName} enrolled in ${subjectArray.name}`);
+}
+
+function unenroll(subjectArray) {
+    console.log("Currently enrolled students:");
+    subjectArray.forEach(student => console.log(student));
+
+    const studentToUnenroll = prompt("Enter the name of the student to unenroll:");
+    const index = subjectArray.indexOf(studentToUnenroll);
+
+    if (index !== -1) {
+        subjectArray.splice(index, 1);
+        console.log(`${studentToUnenroll} unenrolled from ${subjectArray.name}`);
+    } else {
+        console.log(`${studentToUnenroll} not found in the list.`);
+    }
+}
+
+function main() {
+    while (true) {
+        const subject = prompt("Select a subject (A) DSA, (B) PL, (C) Networks, (D) Exit:");
+
+        if (subject === "A") {
+            const operation = prompt("Select an operation (A) Enroll, (B) Unenroll, (C) Select Another Subject:");
+            if (operation === "A") {
+                const studentName = prompt("Enter student name:");
+                enroll(DSA, studentName);
+            } else if (operation === "B") {
+                unenroll(DSA);
+            }
+        } else if (subject === "B") {
+            // Similar logic for PL
+        } else if (subject === "C") {
+            // Similar logic for Networks
+        } else if (subject === "D") {
+            console.log("DSA:", DSA);
+            console.log("PL:", PL);
+            console.log("Networks:", Networks);
+            break;
+        }
+    }
+}
+
+main();
